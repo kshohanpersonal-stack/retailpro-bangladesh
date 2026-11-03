@@ -1,0 +1,21 @@
+{
+  "name": "@ponno/core",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./pdf": "./dist/pdf/engine.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@pdf-lib/fontkit": "^1.1.1",
+    "harfbuzzjs": "^1.6.4",
+    "pdf-lib": "^1.17.1"
+  }
+}

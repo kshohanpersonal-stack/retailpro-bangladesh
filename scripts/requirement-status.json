@@ -1,0 +1,18 @@
+{
+  "REQ-OFF-002": {"status":"TESTED","files":"packages/core/src/db/database.ts","tables":"all","tests":"tests/unit/db.test.ts","testStatus":"PASS (34/34 suite)","issues":""},
+  "REQ-OFF-003": {"status":"TESTED","files":"packages/core/src/db/migrations.ts","tables":"schema_migrations","tests":"tests/unit/db.test.ts","testStatus":"PASS","issues":""},
+  "REQ-OFF-004": {"status":"TESTED","files":"packages/core/src/db/database.ts","tables":"all","tests":"tests/unit/db.test.ts (rollback)","testStatus":"PASS","issues":""},
+  "REQ-OFF-005": {"status":"TESTED","files":"packages/core/src/util/money.ts,quantity.ts","tables":"—","tests":"tests/unit/money.test.ts","testStatus":"PASS","issues":""},
+  "REQ-UX-002": {"status":"INTEGRATED","files":"packages/core/src/util/text.ts,numbers.ts","tables":"—","tests":"tests/unit/money.test.ts","testStatus":"PASS","issues":"UI layer pending"},
+  "REQ-UX-003": {"status":"TESTED","files":"packages/core/src/util/numbers.ts","tables":"—","tests":"tests/unit/money.test.ts","testStatus":"PASS","issues":""},
+  "REQ-SEC-004": {"status":"TESTED","files":"packages/core/src/services/auth.ts","tables":"users,sessions,login_history","tests":"tests/unit/auth.test.ts","testStatus":"PASS","issues":""},
+  "REQ-LIC-001": {"status":"TESTED","files":"packages/core/src/license/crypto.ts","tables":"license_activations","tests":"tests/unit/license.test.ts","testStatus":"PASS","issues":""},
+  "REQ-LIC-002": {"status":"TESTED","files":"packages/core/src/license/crypto.ts,keys.ts","tables":"—","tests":"tests/unit/license.test.ts","testStatus":"PASS","issues":"Owner production key ceremony pending"},
+  "REQ-LIC-003": {"status":"TESTED","files":"packages/core/src/license/crypto.ts","tables":"license_activations","tests":"tests/unit/license.test.ts","testStatus":"PASS","issues":""},
+  "REQ-LIC-005": {"status":"INTEGRATED","files":"packages/core/src/services/license.ts","tables":"license_activations,business_profile","tests":"tests/unit/license.test.ts","testStatus":"PASS","issues":"Activation UI pending"},
+  "REQ-LIC-006": {"status":"TESTED","files":"packages/core/src/services/license.ts","tables":"—","tests":"tests/unit/license.test.ts","testStatus":"PASS","issues":""},
+  "REQ-LIC-007": {"status":"TESTED","files":"packages/core/src/license/crypto.ts","tables":"—","tests":"tests/unit/license.test.ts (tamper/wrong-business/product/version/corrupt/duplicate)","testStatus":"PASS","issues":""},
+  "REQ-FIN-003": {"status":"INTEGRATED","files":"packages/core/src/services/ledger.ts","tables":"accounts,journal_entries,journal_lines","tests":"tests/unit/db.test.ts (invariants)","testStatus":"PASS","issues":"Full posting tests pending business services"},
+  "REQ-BRAND-001": {"status":"IMPLEMENTED","files":"docs/PROJECT_BLUEPRINT.md","tables":"—","tests":"—","testStatus":"N/A","issues":"KI-001 trademark search recommended"},
+  "REQ-DEV-006": {"status":"IMPLEMENTED","files":"docs/*progress*,scripts/update-matrix.mjs","tables":"—","tests":"—","testStatus":"N/A","issues":""}
+}

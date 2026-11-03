@@ -11,6 +11,8 @@ export interface ReceiveInput {
   productId: number; qtyMilli: number; unitCostPoisha: number;
   batchNo?: string; mfgDate?: string | null; expiryDate?: string | null;
   sourceType: string; sourceId?: number | null; referenceNo?: string; reason?: string; date?: string;
+  /** Exact total value to add (poisha); overrides qty×cost rounding so documents tie to the ledger. */
+  valueOverride?: number;
 }
 export interface ConsumeAllocation { batchId: number | null; qtyMilli: number; cogs: number; }
 export interface ConsumeResult { cogs: number; costIncomplete: boolean; allocations: ConsumeAllocation[]; }
@@ -39,7 +41,8 @@ export class InventoryService {
     const p = this.product(input.productId);
     this.ensureInventory(p.id);
     // unitCostPoisha is cost per WHOLE base unit; value = qty_milli × cost / 1000.
-    const addValue = roundHalfUp(input.qtyMilli * input.unitCostPoisha, 1000);
+    const addValue = input.valueOverride !== undefined ? input.valueOverride : roundHalfUp(input.qtyMilli * input.unitCostPoisha, 1000);
+    if (addValue < 0) throw Errors.validation('স্টক ভ্যালু ঋণাত্মক হতে পারে না');
     let batchId: number | null = null;
     const now = nowISO();
     if (p.track_batches) {
@@ -154,6 +157,21 @@ export class InventoryService {
     this.db.run('INSERT INTO stock_movements(product_id,batch_id,direction,qty_milli,unit_cost_poisha,value_poisha,source_type,source_id,reference_no,reason,user_id,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
       p.id, batchId, 'in', input.qtyMilli, input.unitCostPoisha, addValue, input.sourceType, input.sourceId ?? null, input.referenceNo ?? null, input.reason ?? null, actor?.userId ?? null, now);
     return addValue;
+  }
+
+  /** Opening stock: receives stock AND posts Dr Inventory · Cr Owner Equity. */
+  openingStock(actor: Actor, input: { productId: number; qtyMilli: number; unitCostPoisha: number; batchNo?: string; mfgDate?: string | null; expiryDate?: string | null; date?: string }): { batchId: number | null; value: number } {
+    const date = input.date ?? todayISO();
+    return this.db.transaction(() => {
+      const value = roundHalfUp(input.qtyMilli * input.unitCostPoisha, 1000);
+      const rec = this.receive(actor, { productId: input.productId, qtyMilli: input.qtyMilli, unitCostPoisha: input.unitCostPoisha, batchNo: input.batchNo, mfgDate: input.mfgDate, expiryDate: input.expiryDate, sourceType: 'opening', referenceNo: 'OPENING', date });
+      const p = this.product(input.productId);
+      if (value > 0) this.ledger.post(actor, { date, description: `ওপেনিং স্টক: ${p.name}`, sourceType: 'opening_stock', sourceId: input.productId, lines: [
+        { accountCode: '1200', debit: value }, { accountCode: '3000', credit: value },
+      ]});
+      this.audit.log(actor, 'inventory.opening', 'products', input.productId, { after: { qtyMilli: input.qtyMilli, unitCostPoisha: input.unitCostPoisha } });
+      return { batchId: rec.batchId, value };
+    });
   }
 
   /** Stock adjustment (increase/decrease) with reason + journal posting. */

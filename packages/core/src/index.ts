@@ -10,6 +10,8 @@ import { SettingsService } from './services/settings.js';
 import { InventoryService } from './services/inventory.js';
 import { CatalogService } from './services/catalog.js';
 import { PartyService } from './services/parties.js';
+import { PurchaseService } from './services/purchases.js';
+import { SalesService } from './services/sales.js';
 
 export * from './errors.js';
 export * from './util/money.js';
@@ -37,6 +39,8 @@ export class PonnoCore {
   readonly inventory: InventoryService;
   readonly catalog: CatalogService;
   readonly parties: PartyService;
+  readonly purchases: PurchaseService;
+  readonly sales: SalesService;
   readonly schemaVersion: number;
 
   constructor(opts: CoreOptions = {}) {
@@ -52,6 +56,8 @@ export class PonnoCore {
     this.inventory = new InventoryService(this.db, this.audit, this.ledger);
     this.catalog = new CatalogService(this.db, this.audit);
     this.parties = new PartyService(this.db, this.audit, this.ledger);
+    this.purchases = new PurchaseService(this.db, this.audit, this.ledger, this.inventory, this.settings, this.catalog);
+    this.sales = new SalesService(this.db, this.audit, this.ledger, this.inventory, this.settings, this.catalog);
   }
 
   close(): void { this.db.close(); }

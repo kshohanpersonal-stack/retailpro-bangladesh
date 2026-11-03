@@ -1,5 +1,5 @@
 /** Integer money helpers. All amounts are poisha (1 BDT = 100 poisha). */
-import { normalizeDigits } from './numbers.js';
+import { normalizeDigits, toBengaliDigits } from './numbers.js';
 
 export const POISHA_PER_TAKA = 100;
 
@@ -54,11 +54,6 @@ export function groupLakh(w: string): string {
   const last3 = w.slice(-3);
   const rest = w.slice(0, -3);
   return rest.replace(/\B(?=(\d{2})+(?!\d))/g, ',') + ',' + last3;
-}
-
-export function toBengaliDigits(s: string): string {
-  const map = '০১২৩৪৫৬৭৮৯';
-  return s.replace(/\d/g, (d) => map[Number(d)]!);
 }
 
 /** Allocate an integer total across weights proportionally, largest-remainder, exact sum. */

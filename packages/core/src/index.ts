@@ -12,6 +12,11 @@ import { CatalogService } from './services/catalog.js';
 import { PartyService } from './services/parties.js';
 import { PurchaseService } from './services/purchases.js';
 import { SalesService } from './services/sales.js';
+import { PaymentService } from './services/payments.js';
+import { ExpenseService } from './services/expenses.js';
+import { CashService } from './services/cash.js';
+import { ReportService } from './services/reports.js';
+import { DashboardService } from './services/dashboard.js';
 
 export * from './errors.js';
 export * from './util/money.js';
@@ -41,6 +46,11 @@ export class PonnoCore {
   readonly parties: PartyService;
   readonly purchases: PurchaseService;
   readonly sales: SalesService;
+  readonly payments: PaymentService;
+  readonly expenses: ExpenseService;
+  readonly cash: CashService;
+  readonly reports: ReportService;
+  readonly dashboard: DashboardService;
   readonly schemaVersion: number;
 
   constructor(opts: CoreOptions = {}) {
@@ -58,6 +68,11 @@ export class PonnoCore {
     this.parties = new PartyService(this.db, this.audit, this.ledger);
     this.purchases = new PurchaseService(this.db, this.audit, this.ledger, this.inventory, this.settings, this.catalog);
     this.sales = new SalesService(this.db, this.audit, this.ledger, this.inventory, this.settings, this.catalog);
+    this.payments = new PaymentService(this.db, this.audit, this.ledger);
+    this.expenses = new ExpenseService(this.db, this.audit, this.ledger);
+    this.cash = new CashService(this.db, this.audit, this.ledger);
+    this.reports = new ReportService(this.db, this.ledger);
+    this.dashboard = new DashboardService(this.db, this.ledger, this.inventory, this.reports);
   }
 
   close(): void { this.db.close(); }

@@ -7,6 +7,9 @@ import { LedgerService } from './services/ledger.js';
 import { AuthService } from './services/auth.js';
 import { LicenseService } from './services/license.js';
 import { SettingsService } from './services/settings.js';
+import { InventoryService } from './services/inventory.js';
+import { CatalogService } from './services/catalog.js';
+import { PartyService } from './services/parties.js';
 
 export * from './errors.js';
 export * from './util/money.js';
@@ -31,6 +34,9 @@ export class PonnoCore {
   readonly auth: AuthService;
   readonly license: LicenseService;
   readonly settings: SettingsService;
+  readonly inventory: InventoryService;
+  readonly catalog: CatalogService;
+  readonly parties: PartyService;
   readonly schemaVersion: number;
 
   constructor(opts: CoreOptions = {}) {
@@ -43,6 +49,9 @@ export class PonnoCore {
     this.auth = new AuthService(this.db, this.audit);
     this.license = new LicenseService(this.db, this.audit);
     this.settings = new SettingsService(this.db, this.audit, this.ledger);
+    this.inventory = new InventoryService(this.db, this.audit, this.ledger);
+    this.catalog = new CatalogService(this.db, this.audit);
+    this.parties = new PartyService(this.db, this.audit, this.ledger);
   }
 
   close(): void { this.db.close(); }

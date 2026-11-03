@@ -18,6 +18,17 @@ export function ownerSession(core: PonnoCore) {
 
 export const actor = { userId: 1, username: 'owner' };
 
+/** Ensure a real Owner user exists (FK integrity) and return its actor. */
+export function ensureOwner(core: PonnoCore): { userId: number; username: string } {
+  let u = core.db.get<{ id: number }>("SELECT id FROM users WHERE username='owner'");
+  if (!u) {
+    const roleId = core.db.get<{ id: number }>('SELECT id FROM roles WHERE name=?', 'Owner')!.id;
+    core.auth.createUser({ userId: null, username: 'system' }, { username: 'owner', displayName: 'মালিক', password: 'ownerpass123', roleId });
+    u = core.db.get<{ id: number }>("SELECT id FROM users WHERE username='owner'")!;
+  }
+  return { userId: u.id, username: 'owner' };
+}
+
 /** Assert global financial/stock invariants. */
 export function assertInvariants(core: PonnoCore): void {
   core.ledger.assertAllBalanced();

@@ -1,0 +1,102 @@
+# Requirement Traceability Matrix
+
+Auto-generated from REQUIREMENTS.md + scripts/requirement-status.json. 94 requirements. PLANNED: 94
+
+Statuses: NOT STARTED · PLANNED · IN PROGRESS · IMPLEMENTED · INTEGRATED · TESTED · VERIFIED · BLOCKED
+
+| ID | Module | Requirement | Status | Source files | DB tables | Tests | Test execution | Issues |
+|---|---|---|---|---|---|---|---|---|
+| REQ-BRAND-001 | Branding & Identity | Unique, commercially suitable software name selected after conflict research; no legal clearance claimed | PLANNED | — | — | — | NOT RUN | — |
+| REQ-BRAND-002 | Branding & Identity | Original application icon (ICO + source artwork) used in EXE, installer, shortcuts, windows | PLANNED | — | — | — | NOT RUN | — |
+| REQ-BRAND-003 | Branding & Identity | Brand identity consistent across all three executables, installer, docs, About | PLANNED | — | — | — | NOT RUN | — |
+| REQ-BRAND-004 | Branding & Identity | MERQO (brand), merqoonline@gmail.com, Founder Shohan Khan shown only in About/software identity; never on receipts, invoices, statements, reports; no MERQO logo | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UX-001 | Language, Localization, Theme | Entire UI in natural Bangladeshi business Bengali with consistent terminology (প্রোডাক্ট, স্টক, পারচেজ, সেলস, বাকি, ক্যাশ, লাভ…) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UX-002 | Language, Localization, Theme | Unicode Bengali/English/mixed input, storage, display, search, sort, filter, CSV, PDF, print, backup, restore | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UX-003 | Language, Localization, Theme | Bengali↔English digit normalization for numeric input/search without losing original text | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UX-004 | Language, Localization, Theme | Premium light theme only; no dark mode or theme switcher | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UX-005 | Language, Localization, Theme | Bengali যুক্তাক্ষর/কার/ফলা render correctly in UI and PDF (embedded font, HarfBuzz shaping) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UX-006 | Language, Localization, Theme | BDT currency; Bangladeshi lakh/crore number formatting option | PLANNED | — | — | — | NOT RUN | — |
+| REQ-OFF-001 | Offline Architecture & Database | All daily operations work fully offline after activation; no mandatory cloud/API/subscription | PLANNED | — | — | — | NOT RUN | — |
+| REQ-OFF-002 | Offline Architecture & Database | Embedded SQLite with WAL, foreign keys, ACID transactions, parameterized queries | PLANNED | — | — | — | NOT RUN | — |
+| REQ-OFF-003 | Offline Architecture & Database | Schema migrations with version tracking; no unpredictable production schema changes | PLANNED | — | — | — | NOT RUN | — |
+| REQ-OFF-004 | Offline Architecture & Database | Atomic business transactions: sale/purchase/return/payment failures roll back all related records | PLANNED | — | — | — | NOT RUN | — |
+| REQ-OFF-005 | Offline Architecture & Database | Integer minor-unit money (poisha) and integer milli-unit quantities; documented rounding; no float money | PLANNED | — | — | — | NOT RUN | — |
+| REQ-OFF-006 | Offline Architecture & Database | No arbitrary product/customer/invoice limits; capacity bounded only by storage/hardware | PLANNED | — | — | — | NOT RUN | — |
+| REQ-OFF-007 | Offline Architecture & Database | Indexes and database-level search/pagination for large datasets | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DASH-001 | Dashboard | Real-data KPIs: today/yesterday/week/month sales, today purchases, gross & net profit, cash balance, customer due, supplier payable, counts, stock qty & valuation | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DASH-002 | Dashboard | Alerts: low stock, out of stock, expiring, expired; recent sales/transactions/payments | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DASH-003 | Dashboard | Date filters and meaningful charts computed from actual records; empty states; no hardcoded numbers | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DASH-004 | Dashboard | Incomplete cost data is flagged, never shown as zero profit | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PROD-001 | Products, Categories, Brands, Units | Product CRUD + search/filter/sort/archive/controlled delete; all specified fields (name, code, SKU, barcode, QR, category, brand, unit, prices, discount, stock, min stock, description, status, timestamps) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PROD-002 | Products, Categories, Brands, Units | Percentage and fixed-amount product discounts with validation | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PROD-003 | Products, Categories, Brands, Units | Product bulk import (CSV) and export with Bengali preserved | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PROD-004 | Products, Categories, Brands, Units | Category & brand CRUD/search/archive/controlled delete; deletion blocked when dependents exist | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PROD-005 | Products, Categories, Brands, Units | Units: piece, kg, g, liter, ml, packet, carton, dozen, bottle, box, custom; unit conversion (e.g., 1 carton = 12 pieces) applied across purchase/sale/return/inventory | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PROD-006 | Products, Categories, Brands, Units | Batch & expiry: batch no, mfg/expiry dates, batch qty/cost, expiry alerts, expired identification, batch-wise movement; expired sales blocked by default with audited authorized override | PLANNED | — | — | — | NOT RUN | — |
+| REQ-INV-001 | Inventory | Stock In/Out/Adjustment/Transfer/Opening stock with transaction reference + audit; no untracked stock change | PLANNED | — | — | — | NOT RUN | — |
+| REQ-INV-002 | Inventory | Stock history, valuation, low/out-of-stock alerts, batch-wise stock, movement report | PLANNED | — | — | — | NOT RUN | — |
+| REQ-INV-003 | Inventory | Negative stock prevented by default; optional authorized config with documented consequences | PLANNED | — | — | — | NOT RUN | — |
+| REQ-INV-004 | Inventory | Weighted-average costing applied consistently; valuation ties to ledger | PLANNED | — | — | — | NOT RUN | — |
+| REQ-POS-001 | POS & Sales | Fast POS: search by name/code/SKU/barcode/QR, manual selection, cart, qty/unit change, permission-gated price & discount edit | PLANNED | — | — | — | NOT RUN | — |
+| REQ-POS-002 | POS & Sales | Subtotal/discount/grand total/paid/due; customer selection; cash/bank/mobile/partial/due payments; multiple payment splits | PLANNED | — | — | — | NOT RUN | — |
+| REQ-POS-003 | POS & Sales | Unique invoice numbers; historical invoices preserve sale-time names/prices; full invoice fields stored | PLANNED | — | — | — | NOT RUN | — |
+| REQ-POS-004 | POS & Sales | Receipt preview, thermal printing (58/80mm), reprint, PDF receipt; keyboard shortcuts; predictable repeated scans | PLANNED | — | — | — | NOT RUN | — |
+| REQ-POS-005 | POS & Sales | Double-submit protection / idempotent sale submission | PLANNED | — | — | — | NOT RUN | — |
+| REQ-POS-006 | POS & Sales | Sales history with search/filters; invoice reprint | PLANNED | — | — | — | NOT RUN | — |
+| REQ-POS-007 | POS & Sales | Sales return: full/partial/item-wise, reason, refund, customer balance adjustment, stock restoration, return invoice, history; returned qty ≤ eligible sold qty; no duplicate refunds | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PUR-001 | Purchases | Purchase entry: supplier, products, qty/unit/cost/discount, totals, invoice, full/partial/due payment; atomic stock + supplier balance update; historical costs preserved | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PUR-002 | Purchases | Purchase history; purchase return (full/partial/product/batch-wise) with reason, supplier credit/refund, stock deduction, history; qty ≤ eligible purchased qty | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PARTY-001 | Customers & Suppliers | Customer CRUD/search/archive/controlled delete; type, mobile, address, opening balance, due, history, ledger, statement, purchase & payment history | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PARTY-002 | Customers & Suppliers | Due collection: full/partial/multiple payments, method, date, history, statement, printable/PDF; updates ledger + cash/bank + summaries; corrections via audited reversals only | PLANNED | — | — | — | NOT RUN | — |
+| REQ-PARTY-003 | Customers & Suppliers | Supplier CRUD/search/archive/controlled delete; business name, contact person, mobile, address, opening balance, payable, ledger, purchase & payment history, statement | PLANNED | — | — | — | NOT RUN | — |
+| REQ-FIN-001 | Expenses, Cash, Accounting | Expense management with categories (rent, electricity, salary, transport, packaging, maintenance, utilities, other), amount/date/method/description/reference/creator/attachment; category management; feeds net profit | PLANNED | — | — | — | NOT RUN | — |
+| REQ-FIN-002 | Expenses, Cash, Accounting | Cash: opening balance, cash in/out/adjustment, payment accounts, transaction history, receivables, payables, cash flow, daily position; every movement traceable; no silent balance edits | PLANNED | — | — | — | NOT RUN | — |
+| REQ-FIN-003 | Expenses, Cash, Accounting | Integrated double-entry ledger: customer, supplier, cash/bank, expense, inventory, sales, purchase, receivable, payable; every posted entry balances; explicit reversals; no deletion of posted entries | PLANNED | — | — | — | NOT RUN | — |
+| REQ-FIN-004 | Expenses, Cash, Accounting | P&L: gross sales, discounts, net sales, returns, COGS (weighted average), gross profit, operating expense, adjustments, net profit; daily/weekly/monthly/yearly/custom; independently verified scenarios | PLANNED | — | — | — | NOT RUN | — |
+| REQ-RPT-001 | Reports | All 30 specified reports (sales daily/weekly/monthly/yearly/custom, purchase, expense, gross/net profit, stock, valuation, movement, low stock, out-of-stock, expiry, customer due, supplier due, customer/supplier ledger, payment history, cash flow, cash balance, sales return, purchase return, discount, product performance, category performance, inventory adjustment, user activity, audit trail) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-RPT-002 | Reports | Relevant date/search/sort/category/product/customer/supplier/status filters; summary & detail views | PLANNED | — | — | — | NOT RUN | — |
+| REQ-RPT-003 | Reports | CSV + Excel-compatible CSV export (UTF-8 BOM) and PDF export with embedded Bengali font; no blank/fake reports | PLANNED | — | — | — | NOT RUN | — |
+| REQ-BACKUP-001 | Backup & Restore | Manual backup anytime; automatic scheduled local backups with configurable interval/location/retention/max count/naming/verification; offline | PLANNED | — | — | — | NOT RUN | — |
+| REQ-BACKUP-002 | Backup & Restore | Backup includes DB, profile, settings, receipt config, logo/assets, migration metadata; excludes signing keys; SQLite-safe snapshot (VACUUM INTO / online backup) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-BACKUP-003 | Backup & Restore | Verification: integrity check, metadata, version compatibility, corruption detection | PLANNED | — | — | — | NOT RUN | — |
+| REQ-BACKUP-004 | Backup & Restore | Restore: validate → compatibility check → preserve current DB → warn → confirm → atomic restore → verify → rollback on failure; tested with real databases | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SET-001 | Settings & Setup | Settings: business identity/logo/address/contacts, currency, date/number format, invoice prefix/start, receipt, printer, barcode, backup, low-stock threshold, expiry alerts, users, security, app info | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SET-002 | Settings & Setup | First-run setup wizard after activation: business info, logo, currency, invoice config, preferences, opening cash, opening inventory, initial admin; review step; persists to DB | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SEC-001 | Users, Permissions, Audit, Security | Multi-user local accounts; Owner/Admin/Manager/Cashier + configurable roles; unique identity, status, timestamps, last login | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SEC-002 | Users, Permissions, Audit, Security | Granular permissions (sales, products, purchase, stock adjustment, parties, due, expense, financial/profit reports, users, settings, backup, restore, price/discount edit, financial correction); backend enforcement on every sensitive operation | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SEC-003 | Users, Permissions, Audit, Security | Cashiers do not see purchase costs/profit by default | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SEC-004 | Users, Permissions, Audit, Security | Secure password hashing (scrypt/Argon2id class), brute-force protection, sessions, login/logout history | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SEC-005 | Users, Permissions, Audit, Security | Audit trail for all specified actions with user/time/action/record/before/after/reason; no silent erasure | PLANNED | — | — | — | NOT RUN | — |
+| REQ-SEC-006 | Users, Permissions, Audit, Security | Input validation, SQL injection protection, safe file handling, secure config, error logging without secrets, Bengali user-facing errors with diagnostic local logs | PLANNED | — | — | — | NOT RUN | — |
+| REQ-LIC-001 | Offline Licensing | One-time payment lifetime license; no expiry-by-time, no online checks, no renewals | PLANNED | — | — | — | NOT RUN | — |
+| REQ-LIC-002 | Offline Licensing | Ed25519 asymmetric signing: private key only in owner's License Generator; public key embedded in app; private key never in repo/binaries/installer/artifacts | PLANNED | — | — | — | NOT RUN | — |
+| REQ-LIC-003 | Offline Licensing | License payload: unique ID, business name, customer info, product ID, type, issuance, version entitlement, optional binding, signature; institution-specific binding (one institution's license invalid for another) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-LIC-004 | Offline Licensing | License Generator EXE: enter business/customer info, generate unique license, sign, export, view, validate, local history; secure key storage; CSPRNG; no key exposure in UI | PLANNED | — | — | — | NOT RUN | — |
+| REQ-LIC-005 | Offline Licensing | Activation screen on first launch; no business access without valid license; validates structure/signature/product/business/ID/tamper/version/binding; secure activation storage; licensed business name shown | PLANNED | — | — | — | NOT RUN | — |
+| REQ-LIC-006 | Offline Licensing | Invalid licenses rejected with clear Bengali errors without corrupting data; retry flow | PLANNED | — | — | — | NOT RUN | — |
+| REQ-LIC-007 | Offline Licensing | Tested against invalid signatures, modified payloads, wrong business, duplicate IDs, corrupted files, wrong product, invalid entitlements; offline security limitations documented | PLANNED | — | — | — | NOT RUN | — |
+| REQ-APP3-001 | Third Executable | Third EXE with genuine operational need (standalone Backup/Restore & maintenance utility), independently functional, documented, versioned, tested; no signing material | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UI-001 | Design System & Navigation | Unified premium light design system: colors, typography (Bengali font), sizes, spacing, radius, shadows, tables, modals, notifications | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UI-002 | Design System & Navigation | Sidebar navigation to all modules with active state; no overlapping/clipped/broken elements; realistic-data verification | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UI-003 | Design System & Navigation | All interactive components functional (buttons, inputs, dropdowns, search, date pickers, tables, sort/filter/pagination, modals, confirms, toasts, loading, context menus) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UI-004 | Design System & Navigation | Responsive desktop layout, min window size, resize/maximize/restore, DPI 100–200%, no content loss | PLANNED | — | — | — | NOT RUN | — |
+| REQ-UI-005 | Design System & Navigation | Database-level search/filter/sort/pagination across modules; Bengali+English+normalized digit matching | PLANNED | — | — | — | NOT RUN | — |
+| REQ-WIN-001 | Windows Distribution | Professional installer: directory selection, desktop/start-menu shortcuts, icon, runtime, metadata, uninstaller | PLANNED | — | — | — | NOT RUN | — |
+| REQ-WIN-002 | Windows Distribution | First launch: activation check → activation → setup wizard → dashboard | PLANNED | — | — | — | NOT RUN | — |
+| REQ-WIN-003 | Windows Distribution | Uninstall never silently deletes business data; explicit confirmation for data removal | PLANNED | — | — | — | NOT RUN | — |
+| REQ-WIN-004 | Windows Distribution | Update process: compatibility/version check, pre-update backup, migration safety, preserve license/settings/history | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DEV-001 | Build, CI/CD, Release | GitHub Actions: tag-based release pipeline (checkout → env → deps → validate → tests → 3 EXEs → installer → artifact/metadata validation → checksums → notes → publish only if gates pass) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DEV-002 | Build, CI/CD, Release | Least-privilege workflow permissions; secrets in GitHub Secrets; no secrets in workflows/repo | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DEV-003 | Build, CI/CD, Release | Release artifacts: main EXE, License Generator EXE (owner-only handling), third EXE, installer, checksums, release notes, version info, install instructions | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DEV-004 | Build, CI/CD, Release | Meaningful milestone commits pushed continuously; no secrets/business data committed | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DEV-005 | Build, CI/CD, Release | Complete technical docs (20 items), owner/internal guides, Bengali customer manual | PLANNED | — | — | — | NOT RUN | — |
+| REQ-DEV-006 | Build, CI/CD, Release | Resumable progress tracking: DEVELOPMENT_PROGRESS, matrix, KNOWN_ISSUES, NEXT_ACTIONS, BUILD_STATUS, RELEASE_STATUS | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-001 | Testing & Quality | Unit tests: services, calculations, validation, permissions, DB functions, license verification, costing, posting | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-002 | Testing & Quality | Integration tests: product↔inventory, purchase↔stock, sales↔stock/payments, due↔collection, supplier↔payment, expense↔cash, returns, P&L, backup/restore | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-003 | Testing & Quality | Financial tests with independently computed expectations (partial/multiple payments, discounts, returns, cost changes, valuation, opening balances, adjustments, rounding, reversals, balanced ledgers) | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-004 | Testing & Quality | Database tests: rollback, FK, unique, concurrency, migration, integrity, crash recovery, large datasets | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-005 | Testing & Quality | UI tests with realistic Bengali/English data, resize/DPI, long names, large tables, empty/error states, dialogs, print preview | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-006 | Testing & Quality | Hardware: simulated scanner/printer integration tests; physical verification explicitly pending where no device available | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-007 | Testing & Quality | Backup tests: real backup/restore round-trip, corrupted rejection, failed-restore recovery | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-008 | Testing & Quality | Security tests: invalid login, brute force, unauthorized actions, permission bypass, invalid/modified license, injection, path attacks, secret leakage, dependency audit | PLANNED | — | — | — | NOT RUN | — |
+| REQ-QA-009 | Testing & Quality | Performance benchmarks with documented hardware/datasets (thousands of products, tens of thousands of transactions); no invented results | PLANNED | — | — | — | NOT RUN | — |

@@ -1,0 +1,32 @@
+{
+  "name": "ponno",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ponno (পণ্য) — Offline retail business management software for Bangladesh",
+  "license": "UNLICENSED",
+  "author": "MERQO <merqoonline@gmail.com>",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build:core": "npm run build -w @ponno/core",
+    "build:web": "npm run build -w @ponno/web",
+    "build": "npm run build:core && npm run build:web",
+    "dev": "npm run dev -w @ponno/web",
+    "dev:server": "npm run dev:server -w @ponno/web",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b packages/core apps/web apps/desktop",
+    "dist:win": "node scripts/build-windows.mjs",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}

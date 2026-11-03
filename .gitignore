@@ -1,0 +1,32 @@
+node_modules/
+dist/
+build/
+out/
+release/
+*.log
+.DS_Store
+.env
+.env.*
+*.local
+coverage/
+.vite/
+.turbo/
+*.tsbuildinfo
+
+# Never commit secrets or business data
+*.pem
+*.key
+private-keys/
+signing-keys/
+*.ponno-license
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+backups/
+data/
+*.ponnobak
+
+# Local dev databases
+.dev-data/
